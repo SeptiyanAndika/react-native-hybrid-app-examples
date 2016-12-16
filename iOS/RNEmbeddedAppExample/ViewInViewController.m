@@ -23,9 +23,12 @@
     
     // We need a reference to the AppDelegate since that is where we stored our `RCTBridge`.
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
     
     // Here we create a `RCTRootView` that initializes with the `RCTBridge` that we already pre-loaded.
-    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge moduleName:@"SimpleView"];
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge
+                                                     moduleName:@"SimpleView"
+                                              initialProperties:@{}];
     
     // We only want this view to take a small portion of the screen.
     rootView.frame = CGRectMake(20, 84, [UIScreen mainScreen].bounds.size.width - 40, 200);

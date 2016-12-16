@@ -1,10 +1,10 @@
 'use strict';
 
-var React = require('react-native');
+import React, { Component } from 'react';
 
 var SimpleList = require('./SimpleList');
 
-class PassingData extends React.Component {
+class PassingData extends Component {
     render() {
         return (
             // Here we simply pass down our `data` prop that we got from our

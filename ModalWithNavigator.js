@@ -1,13 +1,15 @@
 'use strict';
 
-var React = require('react-native');
 
-var {
-    View,
-    Text,
-    NavigatorIOS,
-    NativeModules,
-} = React;
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  NavigatorIOS,
+  NativeModules,
+  StyleSheet,
+} from 'react-native';
+
 
 var SimpleList = require('./SimpleList');
 var SimpleView = require('./SimpleView');
@@ -19,7 +21,7 @@ var data = [
     'Three',
 ]
 
-class ModalWithNavigator extends React.Component{
+class ModalWithNavigator extends Component{
     _handleButton() {
         ModalWithNavigatorCoordinator.closeModal();
     }
@@ -51,7 +53,7 @@ class ModalWithNavigator extends React.Component{
     }
 };
 
-var styles = React.StyleSheet.create({
+var styles = StyleSheet.create({
     container: {
         flex: 1,
     }

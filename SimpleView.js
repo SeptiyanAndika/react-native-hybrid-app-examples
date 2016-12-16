@@ -1,13 +1,14 @@
 'use strict';
 
-var React = require('react-native');
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
 
-var {
-    View,
-    Text,
-} = React;
 
-class SimpleView extends React.Component{
+class SimpleView extends Component{
     render() {
         return (
             <View style={styles.container}>
@@ -17,7 +18,7 @@ class SimpleView extends React.Component{
     }
 };
 
-var styles = React.StyleSheet.create({
+var styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'red',

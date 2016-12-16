@@ -25,14 +25,14 @@
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Here we create a `RCTRootView` that initializes with the `RCTBridge` that we already pre-loaded.
-    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge moduleName:@"PassingData"];
+    // initialProperies will be a `prop` in the `PassingData` component.
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge
+                                                     moduleName:@"PassingData"
+                                              initialProperties:[self data]];
     
     // We want this view to take up the entire screen.
     rootView.frame = [UIScreen mainScreen].bounds;
-    
-    // Here is where we pass down our data that will be a `prop` in the `PassingData` component.
-    rootView.initialProperties = [self data];
-    
+
     // Each `ViewController` comes with it's own "base" view, here we just want to add our `RCTRootView`
     // to that "base" view so that it is visible on the screen.
     [self.view addSubview:rootView];

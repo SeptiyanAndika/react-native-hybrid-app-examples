@@ -23,6 +23,6 @@
 
 // This method allows us to have access to `NativeModules` that have
 // already been instantiated by the bridge.
-- (id)nativeModuleForString:(NSString *)moduleName;
+//- (id)nativeModuleForString:(NSString *)moduleName;
 
 @end

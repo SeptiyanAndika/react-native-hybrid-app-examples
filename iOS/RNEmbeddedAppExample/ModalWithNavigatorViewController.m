@@ -24,12 +24,16 @@
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Here we create a `RCTRootView` that initializes with the `RCTBridge` that we already pre-loaded.
-    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge moduleName:@"ModalWithNavigator"];
-    
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge
+                                                     moduleName:@"ModalWithNavigator"
+                                              initialProperties:@{}];
+
+    // TODO: Figure out if this is required. It obviously works with it commented out!
+
     // Here we are getting access to the already instanciated `ModalWithNavigatorCoordinator` NativeModule and then
     // setting this controller as it's `Delegate`. This will enable the Coordinator to execute methods here, without
     // being coupled to this specific class.
-    [(ModalWithNavigatorCoordinator *)[delegate nativeModuleForString:@"ModalWithNavigatorCoordinator"] setDelegate:self];
+    //[(ModalWithNavigatorCoordinator *)[delegate nativeModuleForString:@"ModalWithNavigatorCoordinator"] setDelegate:self];
     
     // We want this view to take up the entire screen.
     rootView.frame = [UIScreen mainScreen].bounds;

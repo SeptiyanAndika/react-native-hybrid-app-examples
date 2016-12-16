@@ -4,10 +4,11 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
+import React, { Component } from 'react';
+import {
   AppRegistry,
-} = React;
+} from 'react-native';
+
 
 var SimpleView = require('./SimpleView');
 var PassingData = require('./PassingData');

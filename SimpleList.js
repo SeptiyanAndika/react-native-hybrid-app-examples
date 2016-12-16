@@ -1,15 +1,16 @@
 'use strict';
 
-var React = require('react-native');
+import React, { Component } from 'react';
+import {
+  Text,
+  View,
+  TouchableHighlight,
+  ListView,
+  StyleSheet,
+} from 'react-native';
 
-var {
-    Text,
-    View,
-    TouchableHighlight,
-    ListView,
-} = React;
 
-class SimpleList extends React.Component {
+class SimpleList extends Component {
     constructor(props) {
         super(props);
 
@@ -62,7 +63,7 @@ SimpleList.propTypes = {
     data: React.PropTypes.array.isRequired,
 };
 
-var styles = React.StyleSheet.create({
+var styles = StyleSheet.create({
     separator: {
         height: 1,
         backgroundColor: '#dddde0'
