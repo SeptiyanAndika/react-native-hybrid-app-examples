@@ -1,16 +1,27 @@
 # React Native Hybrid App Examples
 A collection of examples for using React Native in an existing iOS application
 
+### Installation
+
+```
+npm install
+open iOS/RNEmbeddedAppExample.xcodeproj
+```
+
+In Xcode select Run.
+
 ### Concepts
 
 #### Pre-loading the Bridge
 One of the first things that you should do, if you want decent performance out of your hybrid app, is to pre-load your `RCTBridge` and keep a reference of it somewhere (possibly your `AppDelegate`):
 
 *AppDelegate.h*
+
 ```objc
 @property (nonatomic, strong) RCTBridge *bridge;
 ```
 *AppDelegate.m*
+
 ```objc
 @synthesize bridge;
 ...
@@ -34,7 +45,9 @@ This will allow the JavaScript to pre-load and allow you to use this bridge late
 ```objc
 AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge moduleName:@"MyModule"];
+RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge
+                                                 moduleName:@"MyModule"
+                                          initialProperties:nil];
 ```
 
 #### Multiple "Entry" Points
@@ -42,10 +55,11 @@ RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge modu
 In your `index.ios.js` file, you can "register" different modules that you want to use as seperate entry points in your app:
 
 ```javascript
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import {
   AppRegistry,
-} = React;
+} from 'react-native';
 
 var MainEntry = require('./Main');
 var SecondEntry = require('./Second');
@@ -59,7 +73,9 @@ AppRegistry.registerComponent('ThirdEntry', () => ThirdEntry);
 You can then pass these in as the `moduleName` when creating a `RCTRootView`:
 
 ```objc
-RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge moduleName:@"SecondEntry"];
+RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge
+                                                 moduleName:@"SecondEntry"
+                                          initialProperties:nil];
 ```
 
 ### Examples
@@ -81,7 +97,7 @@ RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge modu
        - For example:
             
             ```objc
-            [(MyNativeModule *)[myAppdelegate.bridge.modules[@"MyNativeModule"] setDelegate:self]];
+            [(MyNativeModule *)[myAppdelegate.bridge moduleForName:@"MyNativeModule"] setDelegate:self]];
             ```
      - **Why don't we use the `moduleProvider` block to pass in instances of the modules when the bridge loads?** Since, we are trying to load the bridge at startup, for performance gains, we don't yet have the instance of all of our view controllers.
        - It's possible to do this (and perhaps recommended - no need for a `Coordinator`), but you would need to create your bridges when your container view controller loads, this could cause performance issues if you want your React Native components to display immediately.

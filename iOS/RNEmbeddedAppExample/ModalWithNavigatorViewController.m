@@ -26,7 +26,7 @@
     // Here we create a `RCTRootView` that initializes with the `RCTBridge` that we already pre-loaded.
     RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:delegate.bridge
                                                      moduleName:@"ModalWithNavigator"
-                                              initialProperties:@{}];
+                                              initialProperties:nil];
 
     // Here we are getting access to the already instantiated `ModalWithNavigatorCoordinator` NativeModule and then
     // setting this controller as it's `Delegate`. This will enable the Coordinator to execute methods here, without
