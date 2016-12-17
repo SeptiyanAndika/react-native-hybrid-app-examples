@@ -31,7 +31,11 @@
                                               initialProperties:[self data]];
     
     // We want this view to take up the entire screen.
-    rootView.frame = [UIScreen mainScreen].bounds;
+    // It's surprising that we need absolute coordinates here, and need to place this below
+    // the 20pt status bar and 44 pt nav bar.
+    rootView.frame = CGRectMake(0, 64.0,
+                                [UIScreen mainScreen].bounds.size.width,
+                                [UIScreen mainScreen].bounds.size.height - 64.0);
 
     // Each `ViewController` comes with it's own "base" view, here we just want to add our `RCTRootView`
     // to that "base" view so that it is visible on the screen.
